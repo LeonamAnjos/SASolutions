@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Modules>
+  <Module ID="StockModule">
+    <ID>StockModule</ID>
+    <Name>Produtos</Name>
+    <Description>Controle de entrada e saída de produtos, saldo em estoque, custos entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Grupo>
+      <GrupoView>GrupoView2</GrupoView>
+      <GrupoModel>GrupoModel2</GrupoModel>
+    </Grupo>
+
+
+  </Module>
+  <Module ID="AdmModule">
+    <ID>AdmModule</ID>
+    <Name>Empresas</Name>
+    <View>ICompanyListPresenter</View>
+    <Description>Controle de fluxo de caixa, contas a pagar e receber, baixas, estornos, saldos bancário, entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Grupo>
+      <GrupoView>GrupoView</GrupoView>
+      <GrupoModel>GrupoModel</GrupoModel>
+    </Grupo>
+    
+  </Module>
+  <Module ID="AddressModule">
+    <ID>AddressModule</ID>
+    <Name>Endereço</Name>
+    <Description></Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+
+    <Grupo>
+      <GrupoView>GrupoView1</GrupoView>
+      <GrupoModel>GrupoModel1</GrupoModel>
+    </Grupo>
+
+  </Module>
+
+</Modules>

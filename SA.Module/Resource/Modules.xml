@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Views>
+  <View Module="StockModule">
+    <Name>Frente de Caixa</Name>
+    <Description>Frente de Caixa</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Info Module="StockModule" Presenter="ICashierPresenter" Title="Frente de Caixa"/>
+  </View>
+  <View Module="StockModule">
+    <Name>Produtos</Name>
+    <Description>Controle de entrada e saída de produtos, saldo em estoque, custos entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Info Module="StockModule" Presenter="IProductListPresenter" Title="Produtos"/>
+  </View>
+  <View ID="AdmModule">
+    <Name>Empresas</Name>
+    <Description>Controle de fluxo de caixa, contas a pagar e receber, baixas, estornos, saldos bancário, entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Info Module="AdmModule" Presenter="ICompanyListPresenter" Title="Empresas"/>    
+  </View>
+  <View ID="AddressModule">
+    <Name>CEP</Name>
+    <Description></Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Info Module="AddressModule" Presenter="IZipCodeListPresenter" Title="CEP"/>
+  </View>
+  <View ID="AdmModule">
+    <Name>Usuário</Name>
+    <Description>Usuários do sistema</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Info Module="AdmModule" Presenter="IUserListPresenter" Title="Usuários"/>
+  </View>
+  <View ID="FinancialModule">
+    <Name>Cadastro</Name>
+    <Description>Cadastros</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Info Module="FinancialModule" Presenter="IRegisterListPresenter" Title="Cadastros"/>
+  </View>
+  <View Module="StockModule">
+    <Name>Vendedores</Name>
+    <Description>Vendedores.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Info Module="StockModule" Presenter="IVendorListPresenter" Title="Vendedores"/>
+  </View>
+  <View Module="StockModule">
+    <Name>Pedido</Name>
+    <Description>Pedidos</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+    <Info Module="StockModule" Presenter="IOrderListPresenter" Title="Pedidos"/>
+  </View>
+</Views>

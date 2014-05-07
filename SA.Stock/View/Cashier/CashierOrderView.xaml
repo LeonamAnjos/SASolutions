@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="SA.Stock.View.Cashier.CashierOrderView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:cal="http://www.codeplex.com/CompositeWPF"
+			 xmlns:inf="clr-namespace:SA.Infrastructure;assembly=SA.Infrastructure"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:infConverters="clr-namespace:SA.Infrastructure.Converter;assembly=SA.Infrastructure"
+			 mc:Ignorable="d">
+	<UserControl.Resources>
+		<infConverters:EnumDescriptionConverter x:Key="enumDescriptionConverter" />
+	</UserControl.Resources>    
+	<Grid>
+		<Grid Name="NotificationGroup">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<StackPanel Grid.Column="0">
+				<Label Content="Aviso:" HorizontalAlignment="Left" Padding="5, 5, 5, 2" FontWeight="Bold" FontSize="12"></Label>
+				<TextBlock Text="{Binding Path=Tipo, Mode=OneTime, Converter={StaticResource enumDescriptionConverter}}" Height="Auto" HorizontalAlignment="Stretch" Margin="5,0,5,5" FontSize="32" FontWeight="Bold"></TextBlock>
+			</StackPanel>
+			<StackPanel Grid.Column="1" HorizontalAlignment="Right" Width="250">
+				<Label Content="Sub-total:" HorizontalAlignment="Left" Padding="5, 5, 5, 2" FontWeight="Bold" FontSize="12"></Label>
+				<TextBox Text="{Binding Path=Valor, Mode=OneWay}" Height="Auto" HorizontalAlignment="Stretch" Margin="5,0,5,5" FontSize="32" TextAlignment="Right" FontWeight="Bold" Focusable="False" IsTabStop="False"></TextBox>
+			</StackPanel>
+
+		</Grid>
+
+	</Grid>
+</UserControl>

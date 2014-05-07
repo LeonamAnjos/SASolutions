@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SA.Repository"
+                   namespace="SA.Repository.Domain">
+  <class name="Pais" table="end_pais">
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name="Nome" />
+    <property name="Sigla" />
+  </class>
+</hibernate-mapping>

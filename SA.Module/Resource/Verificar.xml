@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Modules>
+  <Module ID="StockModule">
+    <Name>Frente de caixa</Name>
+    <Description>Controle de entrada e saída de produtos, saldo em estoque, custos entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+  </Module>
+  <Module ID="StockModule">
+    <Name>Clientes</Name>
+    <Description>Controle de fluxo de caixa, contas a pagar e receber, baixas, estornos, saldos bancário, entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+  </Module>
+  <Module ID="StockModule">
+    <Name>Produtos</Name>
+    <Description>Indicadores de desempenho, gráficos, informação sintética e analítica, entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+  </Module>
+  <Module ID="StockModule">
+    <Name>Estoque</Name>
+    <Description>Indicadores de desempenho, gráficos, informação sintética e analítica, entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+  </Module>
+  <Module ID="StockModule">
+    <Name>Estoque</Name>
+    <Description>Indicadores de desempenho, gráficos, informação sintética e analítica, entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+  </Module>
+  <Module ID="StockModule">
+    <Name>Relatório</Name>
+    <Description>Indicadores de desempenho, gráficos, informação sintética e analítica, entre outros.</Description>
+    <ImageFile>/SA.Module;component/Resource/Folder.png</ImageFile>
+  </Module>
+
+
+</Modules>

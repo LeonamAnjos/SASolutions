@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SA.Repository"
+                   namespace="SA.Repository.Domain">
+  <class name="Estado" table="end_estado">
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name="Nome" />
+    <property name="Sigla" />
+    <many-to-one name="Pais"
+                class="Pais"
+                column="PaisID"
+                 cascade="save-update"/>
+  </class>
+</hibernate-mapping>

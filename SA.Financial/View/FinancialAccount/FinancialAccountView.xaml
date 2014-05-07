@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="SA.Financial.View.FinancialAccount.FinancialAccountView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:rep="clr-namespace:SA.Repository.Enums;assembly=SA.Repository"
+			 xmlns:infConverters="clr-namespace:SA.Infrastructure.Converter;assembly=SA.Infrastructure"
+			 mc:Ignorable="d"
+			Background="Transparent">
+	<UserControl.Resources>
+		<infConverters:EnumToBooleanConverter x:Key="enumToBooleanConverter" />
+		<BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+	</UserControl.Resources>
+
+	<StackPanel HorizontalAlignment="Stretch" Width="Auto" >
+		<DockPanel HorizontalAlignment="Stretch">
+			<TextBlock DockPanel.Dock="Left" Margin="2,2,15,2" Style="{StaticResource TextBlockSectionTitle}" Text="Cadastro de Contas Financeiras"/>
+			<StackPanel DockPanel.Dock="Right"  Orientation="Horizontal" HorizontalAlignment="Right">
+				<Button Name="SubmitButton" Command="{Binding Path=SubmitCommand}" CommandParameter="{Binding Path=ContaFinanceira}" Template="{StaticResource LeftButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Salvar</Button>
+				<Button Name="CancelButton" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding Path=ContaFinanceira}" Template="{StaticResource RightButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Cancelar</Button>
+			</StackPanel>
+		</DockPanel>
+		<Border Style="{StaticResource BlackRoundBorderStyle}" BorderThickness="0">
+
+			<!--Border BorderThickness="2"
+				Background="AliceBlue" 
+				BorderBrush="White" 
+				CornerRadius="5"
+				Padding="10" 
+				Margin="2"
+				Style="{StaticResource FadeIn}" >
+			<Border.Effect>
+				<DropShadowEffect Opacity="0.3"/>
+			</Border.Effect-->
+
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+
+				<GroupBox Header="Cadastro" FontWeight="Bold" >
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width=".2*" />
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<StackPanel Grid.Column="0" Orientation="Vertical">
+							<Label Content="Código:" HorizontalAlignment="Left" Padding="5, 5, 5, 2" FontWeight="Bold" ></Label>
+							<TextBox Text="{Binding Path=ContaFinanceira.Cadastro.Id, Mode=OneWay}" Height="Auto" Width="Auto"  HorizontalAlignment="Stretch" Margin="5,0,5,2" IsReadOnly="True"></TextBox>
+						</StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+						    <GroupBox Header="Tipo" FontWeight="Bold" Width="150" HorizontalAlignment="Left">
+							    <StackPanel Orientation="Horizontal">
+								    <RadioButton GroupName="PersonChecked" Content="Física" Margin="5" Name="radioButtonFisica" FontWeight="Normal" IsEnabled="False"
+										    IsChecked="{Binding Path=ContaFinanceira.Cadastro.Tipo, Mode=OneTime, Converter={StaticResource enumToBooleanConverter}, ConverterParameter={x:Static rep:PersonType.Fisica}}"/>
+								    <RadioButton GroupName="CompanyChecked" Content="Jurídica" Margin="5" Name="radioButtonJuridica" FontWeight="Normal" IsEnabled="False"
+										    IsChecked="{Binding Path=ContaFinanceira.Cadastro.Tipo, Mode=OneTime, Converter={StaticResource enumToBooleanConverter}, ConverterParameter={x:Static rep:PersonType.Juridica}}"/>
+							    </StackPanel>
+						    </GroupBox>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2">
+							<Label Content="Nome/Fantasia:" HorizontalAlignment="Left" Padding="5,2,5,2" FontWeight="Bold" ></Label>
+							<TextBox Text="{Binding Path=ContaFinanceira.Cadastro.Nome, Mode=OneWay}" IsReadOnly="True"
+								Height="Auto" Width="Auto" HorizontalAlignment="Stretch" Margin="5,0,5,2"></TextBox>
+						</StackPanel>
+					</Grid>
+				</GroupBox>
+
+				<StackPanel Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <GroupBox Header="Tipo" FontWeight="Bold" Width="250" HorizontalAlignment="Left">
+						    <StackPanel Orientation="Horizontal">
+							    <RadioButton GroupName="CostumerChecked" Content="Cliente" Margin="5" Name="radioButtonCostumer" FontWeight="Normal" 
+											    IsChecked="{Binding Path=Tipo, Mode=TwoWay, Converter={StaticResource enumToBooleanConverter}, ConverterParameter={x:Static rep:FinancialAccountType.Costumer}}"/>
+							    <RadioButton GroupName="SupplierChecked" Content="Fornecedor" Margin="5" Name="radioButtonSupplier" FontWeight="Normal"
+											    IsChecked="{Binding Path=Tipo, Mode=TwoWay, Converter={StaticResource enumToBooleanConverter}, ConverterParameter={x:Static rep:FinancialAccountType.Supplier}}"/>
+							    <RadioButton GroupName="BankChecked" Content="Banco" Margin="5" Name="radioButtonBank" FontWeight="Normal"
+											    IsChecked="{Binding Path=Tipo, Mode=TwoWay, Converter={StaticResource enumToBooleanConverter}, ConverterParameter={x:Static rep:FinancialAccountType.Bank}}"/>
+						    </StackPanel>
+					    </GroupBox>
+                        <GroupBox Header="Situação" FontWeight="Bold">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton GroupName="ActiveChecked" Content="Ativo" Margin="5" Name="radioButtonAtivo" FontWeight="Normal" 
+											        IsChecked="{Binding Path=Situacao, Mode=TwoWay, Converter={StaticResource enumToBooleanConverter}, ConverterParameter={x:Static rep:ActiveInactiveType.Active}}"/>
+                                <RadioButton GroupName="InactiveChecked" Content="Inativo" Margin="5" Name="radioButtonInativo" FontWeight="Normal"
+											        IsChecked="{Binding Path=Situacao, Mode=TwoWay, Converter={StaticResource enumToBooleanConverter}, ConverterParameter={x:Static rep:ActiveInactiveType.Inactive}}"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+
+                    <GroupBox Header="Endereço de Cobrança" FontWeight="Bold" 
+							  Visibility="{Binding Path=IsChecked, ElementName=radioButtonCostumer, Converter={StaticResource BoolToVisConverter}}">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<StackPanel Grid.Row="0">
+								<Label Content="CEP:" HorizontalAlignment="Left" Padding="5,5,5,2" FontWeight="Bold" ></Label>
+								<StackPanel Grid.Row="0" Orientation="Horizontal">
+									<TextBox Text="{Binding Path=NumeroCobrancaCep, ValidatesOnExceptions=True, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Height="Auto" Width="100" HorizontalAlignment="Stretch" Margin="5,0,5,2" TextWrapping="NoWrap" AcceptsTab="False"></TextBox>
+									<TextBox Text="{Binding Path=CobrancaCep.Logradouro, Mode=OneWay}" Height="Auto" Width="230" HorizontalAlignment="Stretch" Margin="0,0,5,2" IsReadOnly="True"></TextBox>
+									<TextBox Text="{Binding Path=CobrancaCep.Cidade.Nome, Mode=OneWay}" Height="Auto" Width="150" HorizontalAlignment="Stretch" Margin="0,0,5,2" IsReadOnly="True"></TextBox>
+									<TextBox Text="{Binding Path=CobrancaCep.Cidade.Estado.Sigla, Mode=OneWay}" Height="Auto" Width="50" HorizontalAlignment="Stretch" Margin="0,0,0,2" IsReadOnly="True"></TextBox>
+									<Button Command="{Binding Path=SearchZipCodeCommand}" Template="{StaticResource RightButtonTemplate}" Cursor="Hand" VerticalAlignment="Center" Margin="0,0,0,2">Consultar</Button>
+								</StackPanel>
+							</StackPanel>
+							<StackPanel Orientation="Horizontal" Grid.Row="1">
+								<StackPanel>
+									<Label Content="Número:" HorizontalAlignment="Left" Padding="5,5,5,2" FontWeight="Bold" ></Label>
+									<TextBox Text="{Binding Path=CobrancaNumero}" Height="Auto" Width="100" HorizontalAlignment="Left" Margin="5,0,5,2" TextWrapping="NoWrap" AcceptsTab="False" MaxLength="5"></TextBox>
+								</StackPanel>
+								<StackPanel Grid.Row="1">
+									<Label Content="Complemento:" HorizontalAlignment="Left" Padding="5,5,5,2" FontWeight="Bold" ></Label>
+									<TextBox Text="{Binding Path=CobrancaComplemento, ValidatesOnExceptions=True, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Height="Auto" Width="300" HorizontalAlignment="Left" Margin="5,0,5,2" TextWrapping="NoWrap" AcceptsTab="False" ></TextBox>
+								</StackPanel>
+							</StackPanel>
+						</Grid>
+					</GroupBox>
+				</StackPanel>
+			</Grid>
+		</Border>
+	</StackPanel>
+
+</UserControl>

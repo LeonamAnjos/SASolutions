@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SA.Repository"
+                   namespace="SA.Repository.Domain">
+  <class name="Produto" table="est_produto">
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name="Referencia" />
+    <property name="Nome"/>
+    <many-to-one name="Grupo" class="Grupo" column="GrupoID" cascade="none"/>
+    <many-to-one name="SubGrupo" class="SubGrupo" column="SubGrupoID" cascade="none"/>
+    <many-to-one name="Fabricante" class="Fabricante" column="FabricanteID" cascade="none"/>
+    <many-to-one name="Unidade" class="Unidade" column="UnidadeID" cascade="none"/>
+  </class>
+</hibernate-mapping>

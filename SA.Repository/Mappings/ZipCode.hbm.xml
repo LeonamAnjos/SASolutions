@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SA.Repository"
+                   namespace="SA.Repository.Domain">
+  <class name="Cep" table="end_cep">
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name="CEP" />
+    <property name="Logradouro" />
+    <property name="Bairro" />
+    <many-to-one name="Cidade"
+                class="Cidade"
+                column="CidadeID"
+                 cascade="save-update"/>
+  </class>
+</hibernate-mapping>

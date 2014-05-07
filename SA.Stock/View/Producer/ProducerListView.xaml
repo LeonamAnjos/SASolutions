@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="SA.Stock.View.Producer.ProducerListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <StackPanel HorizontalAlignment="Stretch" Width="Auto" >
+        <DockPanel HorizontalAlignment="Stretch">
+            <TextBlock DockPanel.Dock="Left" Margin="2,2,15,2" Style="{StaticResource TextBlockSectionTitle}" Text="Consulta de Fabricantes"/>
+            <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="CreateButton" Command="{Binding Path=CreateCommand}" CommandParameter="{Binding Path=Fabricante}" Template="{StaticResource LeftButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Incluir</Button>
+                <Button Name="UpdateButton" Command="{Binding Path=UpdateCommand}" CommandParameter="{Binding Path=Fabricante}" Template="{StaticResource MiddleButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Alterar</Button>
+                <Button Name="DeleteButton" Command="{Binding Path=DeleteCommand}" CommandParameter="{Binding Path=Fabricante}" Template="{StaticResource RightButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Excluir</Button>
+            </StackPanel>
+        </DockPanel>
+
+        <!--GroupBox Header="Consulta" Margin="2" Style="{StaticResource FadeIn}"-->
+        <ListView x:Name="ListaFabricantes" 
+                    ItemsSource="{Binding Fabricantes}" 
+                    SelectedItem="{Binding Fabricante}" 
+                    IsSynchronizedWithCurrentItem="True"
+                    BorderThickness="0" 
+                    Width="Auto" MouseDoubleClick="ListaFabricantes_MouseDoubleClick">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true">
+                    <GridViewColumn Header="Código" DisplayMemberBinding="{Binding Path=Id}" Width="65"></GridViewColumn>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Path=Nome}" Width="300"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--/GroupBox-->
+    </StackPanel>
+</UserControl>

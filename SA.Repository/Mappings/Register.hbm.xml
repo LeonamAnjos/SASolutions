@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SA.Repository"
+                   namespace="SA.Repository.Domain">
+  <class name="Cadastro" table="fin_cadastro">
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name="Tipo" column="Tipo" type="SA.Repository.Enums.PersonTypeNHConverter, SA.Repository" />
+    <property name="Situacao" column="Situacao" type="SA.Repository.Enums.ActiveInactiveTypeNHConverter, SA.Repository" />
+    <property name="Nome" />
+    <property name="CPF" />
+    <property name="RG" length="8" />
+    <property name="RazaoSocial" />
+    <property name="Contato" />
+    <property name="EMail" />
+    <property name="Telefone" />
+    <property name="Celular" />
+    <property name="Fax" />
+    <property name="DataNascimento" />
+    <property name="DataInclusao" />
+    <property name="DataAlteracao" />
+    <many-to-one name="CorrespCep" class="Cep" column="EndCorrespCepID" cascade="none"/>
+    <property name="CorrespNumero" column="EndCorrespNumero" />
+    <property name="CorrespComplemento" column="EndCorrespComplemento"/>
+
+    <bag name="ContasFinanceiras" inverse="true" lazy="true" cascade="all-delete-orphan">
+      <key column="CadastroID" />
+      <one-to-many class="ContaFinanceira"/>
+    </bag>
+  </class>
+</hibernate-mapping>

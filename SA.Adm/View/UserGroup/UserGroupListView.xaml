@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="SA.Adm.View.UserGroup.UserGroupListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:infConverters="clr-namespace:SA.Infrastructure.Converter;assembly=SA.Infrastructure"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <infConverters:EnumDescriptionConverter x:Key="enumDescriptionConverter" />
+    </UserControl.Resources>
+
+    <StackPanel HorizontalAlignment="Stretch" Width="Auto" >
+        <DockPanel HorizontalAlignment="Stretch">
+            <TextBlock DockPanel.Dock="Left" Margin="2,2,15,2" Style="{StaticResource TextBlockSectionTitle}" Text="Consulta de Grupos de Usuário"/>
+            <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="CreateButton" Command="{Binding Path=CreateCommand}" CommandParameter="{Binding Path=Grupo}" Template="{StaticResource LeftButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Incluir</Button>
+                <Button Name="UpdateButton" Command="{Binding Path=UpdateCommand}" CommandParameter="{Binding Path=Grupo}" Template="{StaticResource MiddleButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Alterar</Button>
+                <Button Name="DeleteButton" Command="{Binding Path=DeleteCommand}" CommandParameter="{Binding Path=Grupo}" Template="{StaticResource RightButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Excluir</Button>
+            </StackPanel>
+        </DockPanel>
+
+        <!--GroupBox Header="Consulta" Margin="2" Style="{StaticResource FadeIn}"-->
+        <ListView x:Name="ListaUsuarios" 
+                      ItemsSource="{Binding Grupos}" 
+                      SelectedItem="{Binding Grupo}" 
+                      IsSynchronizedWithCurrentItem="True"
+                      BorderThickness="0" 
+                      Width="Auto" MouseDoubleClick="ListaGrupoUsuarios_MouseDoubleClick">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true">
+                    <GridViewColumn Header="Código" DisplayMemberBinding="{Binding Path=Id}" Width="65"></GridViewColumn>
+                    <GridViewColumn Header="Descrição"  DisplayMemberBinding="{Binding Path=Descricao}" Width="300"></GridViewColumn>
+                    <GridViewColumn Header="Tipo" DisplayMemberBinding="{Binding Path=Tipo, Converter={StaticResource enumDescriptionConverter}}" Width="120"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--/GroupBox-->
+    </StackPanel>
+</UserControl>

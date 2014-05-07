@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="SA.Repository"
+                   namespace="SA.Repository.Domain">
+  <class name="Pedido" table="est_pedido">
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    
+    <property name="Data" />
+    <property name="Hora" />
+    <property name="DataValidade" />
+    <property name="Valor" />
+    <property name="ValorDesconto" />
+    <property name="ValorDescontoTotal" />
+    
+    <property name="Tipo" column="Tipo" type="SA.Repository.Enums.OrderTypeNHConverter, SA.Repository" />
+    <property name="Fase" column="Fase" type="SA.Repository.Enums.PhaseTypeNHConverter, SA.Repository" />
+    <many-to-one name="Cadastro" class="Cadastro" column="CadastroID" cascade="none"/>
+    <many-to-one name="Vendedor" class="Vendedor" column="VendedorID" cascade="none"/>
+
+    <bag name="Itens" inverse="true" lazy="true" cascade="all-delete-orphan">
+      <key column="PedidoID" />
+      <one-to-many class="PedidoItem"/>
+    </bag>
+  </class>
+</hibernate-mapping>

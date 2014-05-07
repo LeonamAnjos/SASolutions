@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="SA.Stock.View.Product.ProductView"
+			xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			mc:Ignorable="d"
+			Background="Transparent">
+
+	<StackPanel HorizontalAlignment="Stretch" Width="Auto" >
+		<DockPanel HorizontalAlignment="Stretch">
+			<TextBlock DockPanel.Dock="Left" Margin="2,2,15,2" Style="{StaticResource TextBlockSectionTitle}" Text="Cadastro de Produtos"/>
+			<StackPanel DockPanel.Dock="Right"  Orientation="Horizontal" HorizontalAlignment="Right">
+				<Button Name="SubmitButton" Command="{Binding Path=SubmitCommand}" CommandParameter="{Binding Path=Produto}" Template="{StaticResource LeftButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Salvar</Button>
+				<Button Name="CancelButton" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding Path=Produto}" Template="{StaticResource RightButtonTemplate}" Cursor="Hand" VerticalAlignment="Top">Cancelar</Button>
+			</StackPanel>
+		</DockPanel>
+		<Border Style="{StaticResource BlackRoundBorderStyle}" BorderThickness="0">
+
+			<!--Border BorderThickness="2"
+				Background="AliceBlue" 
+				BorderBrush="White" 
+				CornerRadius="5"
+				Padding="10" 
+				Margin="2"
+				Style="{StaticResource FadeIn}" >
+			<Border.Effect>
+				<DropShadowEffect Opacity="0.3"/>
+			</Border.Effect-->
+
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width=".3*" />
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="0" Orientation="Vertical">
+					<Label Content="Código:" HorizontalAlignment="Left" Padding="5, 5, 5, 2" FontWeight="Bold" ></Label>
+					<TextBox Text="{Binding Path=Produto.Id}" Height="Auto" Width="Auto"  HorizontalAlignment="Stretch" Margin="5,0,5,5" IsReadOnly="True"></TextBox>
+				</StackPanel>
+				<StackPanel Grid.Column="1">
+					<Label Content="Referência:" HorizontalAlignment="Left" Padding="5,5,5,2" FontWeight="Bold" ></Label>
+					<TextBox Text="{Binding Path=Referencia, ValidatesOnExceptions=True, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" 
+					Height="Auto" Width="Auto" HorizontalAlignment="Stretch" Margin="5,0,5,5"></TextBox>
+				</StackPanel>
+				<StackPanel Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2">
+					<Label Content="Nome:" HorizontalAlignment="Left" Padding="5,5,5,2" FontWeight="Bold" ></Label>
+					<TextBox Text="{Binding Path=Nome, ValidatesOnExceptions=True, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" 
+					Height="Auto" Width="Auto" HorizontalAlignment="Stretch" Margin="5,0,5,5"></TextBox>
+				</StackPanel>
+				<StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
+					<Label Content="Fabricante:" HorizontalAlignment="Left" Padding="5,5,5,2" FontWeight="Bold" ></Label>
+					<StackPanel Orientation="Horizontal">
+						<TextBox Text="{Binding Path=FabricanteID, ValidatesOnExceptions=True, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Height="Auto" Width="50" HorizontalAlignment="Stretch" Margin="5,0,5,5" TextWrapping="NoWrap" AcceptsTab="False" MaxLength="5"></TextBox>
+						<TextBox Text="{Binding Path=Fabricante.Nome, Mode=OneWay}" Height="Auto" Width="200" HorizontalAlignment="Stretch" Margin="0,0,0,5" IsReadOnly="True"></TextBox>
+						<Button Command="{Binding Path=SearchProducerCommand}" Template="{StaticResource RightButtonTemplate}" Cursor="Hand" VerticalAlignment="Center" Margin="0,0,0,5">Consultar</Button>
+					</StackPanel>
+				</StackPanel>
+				<StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3">
+					<Label Content="Grupo:" HorizontalAlignment="Left" Padding="5,5,5,2" FontWeight="Bold" ></Label>
+					<StackPanel Orientation="Horizontal">
+						<TextBox Text="{Binding Path=GrupoID, ValidatesOnExceptions=True, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Height="Auto" Width="50" HorizontalAlignment="Stretch" Margin="5,0,5,5" TextWrapping="NoWrap" AcceptsTab="False" MaxLength="5"></TextBox>
+						<TextBox Text="{Binding Path=Grupo.Descricao, Mode=OneWay}" Height="Auto" Width="200" HorizontalAlignment="Stretch" Margin="0,0,0,5" IsReadOnly="True"></TextBox>
+						<Button Command="{Binding Path=SearchGroupCommand}" Template="{StaticResource RightButtonTemplate}" Cursor="Hand" VerticalAlignment="Center" Margin="0,0,0,5">Consultar</Button>
+					</StackPanel>
+				</StackPanel>
+				<StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4">
+					<Label Content="Sub-grupo:" HorizontalAlignment="Left" Padding="5,5,5,2" FontWeight="Bold" ></Label>
+					<StackPanel Orientation="Horizontal">
+						<TextBox Text="{Binding Path=SubGrupoID, ValidatesOnExceptions=True, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Height="Auto" Width="50" HorizontalAlignment="Stretch" Margin="5,0,5,5" TextWrapping="NoWrap" AcceptsTab="False" MaxLength="5"></TextBox>
+						<TextBox Text="{Binding Path=SubGrupo.Descricao, Mode=OneWay}" Height="Auto" Width="200" HorizontalAlignment="Stretch" Margin="0,0,0,5" IsReadOnly="True"></TextBox>
+						<Button Command="{Binding Path=SearchSubGroupCommand}" Template="{StaticResource RightButtonTemplate}" Cursor="Hand" VerticalAlignment="Center" Margin="0,0,0,5">Consultar</Button>
+					</StackPanel>
+				</StackPanel>
+				<StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5">
+					<Label Content="Unidade:" HorizontalAlignment="Left" Padding="5,5,5,2" FontWeight="Bold" ></Label>
+					<StackPanel Orientation="Horizontal">
+						<TextBox Text="{Binding Path=UnidadeID, ValidatesOnExceptions=True, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Height="Auto" Width="50" HorizontalAlignment="Stretch" Margin="5,0,5,5" TextWrapping="NoWrap" AcceptsTab="False" MaxLength="5"></TextBox>
+						<TextBox Text="{Binding Path=Unidade.Descricao, Mode=OneWay}" Height="Auto" Width="150" HorizontalAlignment="Stretch" Margin="0,0,0,5" IsReadOnly="True"></TextBox>
+						<TextBox Text="{Binding Path=Unidade.Simbolo, Mode=OneWay}" Height="Auto" Width="47" HorizontalAlignment="Stretch" Margin="3,0,0,5" IsReadOnly="True"></TextBox>
+						<Button Command="{Binding Path=SearchUnitCommand}" Template="{StaticResource RightButtonTemplate}" Cursor="Hand" VerticalAlignment="Center" Margin="0,0,0,5">Consultar</Button>
+					</StackPanel>
+				</StackPanel>
+
+
+
+			</Grid>
+ 
+		</Border>
+	</StackPanel>
+
+</UserControl>
